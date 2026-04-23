@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+training/out/
+node_modules/
+dist/
+.DS_Store
+
+# Runtime uploads are intentionally local volume state.
+models/*/
+!models/.gitkeep
+out/*
+plans/*
+C
+*/*/*.csv

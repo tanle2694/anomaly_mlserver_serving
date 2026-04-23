@@ -1,0 +1,6 @@
+joblib==1.5.3
+mlserver==1.6.0
+mlserver-sklearn==1.6.0
+numpy==2.4.4
+scikit-learn==1.8.0
+shap==0.51.0

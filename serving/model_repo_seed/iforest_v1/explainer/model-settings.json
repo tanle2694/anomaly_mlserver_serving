@@ -1,0 +1,22 @@
+{
+  "name": "iforest_v1__explainer",
+  "implementation": "shap_runtime.ShapExplainerRuntime",
+  "parameters": {
+    "uri": "./explainer.joblib",
+    "version": "v1"
+  },
+  "inputs": [
+    {
+      "name": "input-0",
+      "datatype": "FP64",
+      "shape": [-1, 4]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "shap_values",
+      "datatype": "FP64",
+      "shape": [-1, 4]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+services:
+  mlserver:
+    build: ./serving
+    container_name: anomaly-mlserver
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    volumes:
+      - ./models:/models
+    environment:
+      - MLSERVER_PARALLEL_WORKERS=0
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/v2/health/ready')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  backend:
+    build: ./backend
+    container_name: anomaly-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/models
+    environment:
+      - MLSERVER_URL=http://mlserver:8080
+      - MODELS_DIR=/models
+    depends_on:
+      mlserver:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # frontend:
+  #   build: ./frontend
+  #   container_name: anomaly-frontend
+  #   ports:
+  #     - "8089:80"
+  #   depends_on:
+  #     - backend
+  #   restart: unless-stopped

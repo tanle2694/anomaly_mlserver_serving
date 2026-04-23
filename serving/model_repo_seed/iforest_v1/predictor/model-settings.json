@@ -1,0 +1,27 @@
+{
+  "name": "iforest_v1__predictor",
+  "implementation": "predictor_runtime.PredictorRuntime",
+  "parameters": {
+    "uri": "./predictor.joblib",
+    "version": "v1"
+  },
+  "inputs": [
+    {
+      "name": "input-0",
+      "datatype": "FP64",
+      "shape": [-1, 4]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "anomaly_score",
+      "datatype": "FP64",
+      "shape": [-1]
+    },
+    {
+      "name": "is_anomaly",
+      "datatype": "INT64",
+      "shape": [-1]
+    }
+  ]
+}
