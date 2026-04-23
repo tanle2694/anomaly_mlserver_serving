@@ -45,7 +45,7 @@ export default function Inference({ models }: Props) {
   const curlInfer = useMemo(
     () =>
       selectedModel
-        ? `curl -s -X POST http://localhost:8000/api/infer/${selectedModel} \\\n  -H 'Content-Type: application/json' \\\n  -d '${JSON.stringify({ features })}'`
+        ? `curl -s -X POST http://localhost:8000/api/infer/${selectedModel} \\\n  -H 'Content-Type: application/json' \\\n  -d '${JSON.stringify({ features, include_contributions: false })}'`
         : "",
     [selectedModel, features],
   );
