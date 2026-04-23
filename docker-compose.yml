@@ -32,11 +32,11 @@ services:
         condition: service_healthy
     restart: unless-stopped
 
-  # frontend:
-  #   build: ./frontend
-  #   container_name: anomaly-frontend
-  #   ports:
-  #     - "8089:80"
-  #   depends_on:
-  #     - backend
-  #   restart: unless-stopped
+  frontend:
+    build: ./frontend
+    container_name: anomaly-frontend
+    ports:
+      - "8089:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
